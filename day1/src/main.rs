@@ -2,6 +2,7 @@ use std::fs::File;
 use std::io::{self, BufRead};
 use std::path::Path;
 
+// https://doc.rust-lang.org/rust-by-example/std_misc/file/read_lines.html
 fn read_lines<P>(filename: P) -> io::Result<io::Lines<io::BufReader<File>>>
 where P: AsRef<Path>, {
     let file = File::open(filename)?;
@@ -15,15 +16,15 @@ fn part1() {
     let mut cur = 0;
     if let Ok(lines) = read_lines("./input.txt") {
         for line in lines {
-            if let Ok(this) = line {
-                if this.len() == 0 {
+            if let Ok(line) = line {
+                if line.len() == 0 {
                     if cur > max {
                         max = cur;
                     }
                     cur = 0;
                     continue;
                 }
-                let value = this.parse::<i32>().unwrap();
+                let value = line.parse::<i32>().unwrap();
                 cur += value;                
             }
         }
@@ -37,13 +38,13 @@ fn part2() {
     let mut cur = 0;
     if let Ok(lines) = read_lines("./input.txt") {
         for line in lines {
-            if let Ok(this) = line {
-                if this.len() == 0 {
+            if let Ok(line) = line {
+                if line.len() == 0 {
                     totals.push(cur);
                     cur = 0;                    
                     continue;
                 }
-                let value = this.parse::<i32>().unwrap();
+                let value = line.parse::<i32>().unwrap();
                 cur += value;                
             }
         }
