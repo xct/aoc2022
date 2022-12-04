@@ -18,8 +18,8 @@ fn main() {
         return (HashSet::from_iter(a3), HashSet::from_iter(b3));
     }).collect();
 
-    let result: i32 = data.iter().map(|score_1 | {
-        let (a, b) = score_1;
+    let result: i32 = data.iter().map(|section_group | {
+        let (a, b) = section_group;
         let int: HashSet<_> = a.intersection(&b).map(|i| *i).collect();
 
         if int.eq(a) || int.eq(b) {
@@ -31,8 +31,8 @@ fn main() {
 
     println!("Part 1: {}", result); // 534
 
-    let result: i32 = data.iter().map(|score_1 | {
-        let (a, b) = score_1;
+    let result: i32 = data.iter().map(|section_group | {
+        let (a, b) = section_group;
         let int: HashSet<_> = a.intersection(&b).map(|i| *i).collect();
 
         if !int.is_empty() {
