@@ -47,11 +47,11 @@ fn score_2(group: &[String; 3]) -> i32 {
 fn main() {
     let data: Vec<String> = read_lines("input.txt").unwrap().map(|line | line.unwrap()).collect();
 
-    let total: i32 = data.iter().map(score_1).sum();
-    println!("Part 1: {}", total); // 8139
+    let total_1: i32 = data.iter().map(score_1).sum();
+    println!("Part 1: {}", total_1); // 8139
 
-    let x: i32 = data.array_chunks::<3>().map(| group | {
+    let total_2: i32 = data.array_chunks::<3>().map(| group | {
         return score_2(group);
     }).sum(); 
-    println!("Part 2: {}", x); // 2668
+    println!("Part 2: {}", total_2); // 2668
 }
